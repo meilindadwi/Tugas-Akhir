@@ -17,5 +17,12 @@ class Reservation extends Model
         'time',
         'notes',
         'payment_proof',
+        'consultation_method',
     ];
+    // Contoh definisi relasi di model Reservation
+public function user()
+{
+    return $this->belongsTo(User::class);
+}
+
 }

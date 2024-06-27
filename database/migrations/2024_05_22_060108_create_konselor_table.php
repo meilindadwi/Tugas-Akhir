@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->longText('pengalaman');
+            $table->longText('deskripsi');
             $table->string('foto');
             $table->timestamps();
         });

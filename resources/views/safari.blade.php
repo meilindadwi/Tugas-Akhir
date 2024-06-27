@@ -25,10 +25,6 @@
             <span class="icon-search2"></span>
             <img class="img-fluid" src="images/img_2.jpg">
           </a>
-          <a href="images/img_3.jpg" class="item-wrap fancybox mb-4" data-fancybox="gal" data-aos="fade-up" data-aos-delay="200">
-            <span class="icon-search2"></span>
-            <img class="img-fluid" src="images/img_3.jpg">
-          </a>
 
         </div>
         <div class="col-md-6 col-lg-4 item">
@@ -44,10 +40,6 @@
             <span class="icon-search2"></span>
             <img class="img-fluid" src="images/img_5.jpg">
           </a>
-          <a href="images/img_8.jpg" class="item-wrap fancybox mb-4" data-fancybox="gal" data-aos="fade-up" data-aos-delay="200">
-            <span class="icon-search2"></span>
-            <img class="img-fluid" src="images/img_8.jpg">
-          </a>
         </div>
         <div class="col-md-6 col-lg-4 item">
           <a href="images/img-school-2-min.jpg" class="item-wrap fancybox mb-4" data-fancybox="gal" data-aos="fade-up" data-aos-delay="0">
@@ -61,14 +53,6 @@
           <a href="images/img_6.jpg" class="item-wrap fancybox mb-4" data-fancybox="gal" data-aos="fade-up" data-aos-delay="100">
             <span class="icon-search2"></span>
             <img class="img-fluid" src="images/img_6.jpg">
-          </a>
-          <a href="images/img_7.jpg" class="item-wrap fancybox mb-4" data-fancybox="gal" data-aos="fade-up" data-aos-delay="200">
-            <span class="icon-search2"></span>
-            <img class="img-fluid" src="images/img_7.jpg">
-          </a>
-          <a href="images/img_10.jpg" class="item-wrap fancybox mb-4" data-fancybox="gal" data-aos="fade-up" data-aos-delay="0">
-            <span class="icon-search2"></span>
-            <img class="img-fluid" src="images/img_10.jpg">
           </a>
 
         </div>

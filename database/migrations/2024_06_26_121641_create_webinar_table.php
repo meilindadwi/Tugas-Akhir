@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('payment', function (Blueprint $table) {
+        Schema::create('webinar', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email');
-            $table->string('phone');
-            $table->string('payment_proof')->nullable();
+            $table->string('judul');
+            $table->longText('deskripsi_materi');
+            $table->dateTime('tanggal');
+            $table->string('waktu')->default('UTC');
+            $table->string('pembicara')->nullable();
+            $table->string('foto');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('payment');
+        Schema::dropIfExists('webinar');
     }
 };

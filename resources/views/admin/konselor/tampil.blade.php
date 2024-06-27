@@ -16,6 +16,10 @@
                         <input type="text" name="pengalaman" class="form-control" id="pengalaman" aria-describedby="pengalamanHelp" value="{{ $konselor->pengalaman }}">
                     </div>
                     <div class="mb-3">
+                        <label for="deskripsi" class="form-label">Deskripsi</label>
+                        <input type="text" name="deskripsi" class="form-control" id="deskripsi" aria-describedby="deskripsiHelp" value="{{ $konselor->deskripsi }}">
+                    </div>
+                    <div class="mb-3">
                         <label for="foto" class="form-label">Foto</label>
                         <input type="file" name="foto" class="form-control" id="foto" aria-describedby="fotoHelp" value="{{ $konselor->foto }}">
                     </div>

@@ -7,54 +7,22 @@
 @section('content')
 <div class="untree_co-section bg-light">
     <div class="container">
-
-      <div class="row">
-        <div class="col-12 col-sm-6 col-md-6 mb-4 mb-lg-0 col-lg-4" data-aos="fade-up" data-aos-delay="0">
-          <div class="staff text-center">
-            <div class="mb-4"><img src="images/staff_1.jpg" alt="Image" class="img-fluid"></div>
-            <div class="staff-body">
-              <h3 class="staff-name">Mina Collins</h3>
-              <span class="d-block position mb-4">Teacher in Math</span>
-              <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-              <div class="social">
-                <a href="#" class="mx-2"><span class="icon-facebook"></span></a>
-                <a href="#" class="mx-2"><span class="icon-twitter"></span></a>
-                <a href="#" class="mx-2"><span class="icon-linkedin"></span></a>
-              </div>
-            </div>
-          </div>
+        <div class="row">
+            @foreach($konselors as $konselor)
+                <div class="col-12 col-sm-6 col-md-6 mb-4 mb-lg-0 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+                    <div class="staff text-center">
+                        <div class="mb-4">
+                            <img src="{{ asset('fotokonselor/' . $konselor->foto) }}" alt="Image" class="img-fluid">
+                        </div>
+                        <div class="staff-body">
+                            <h3 class="staff-name">{{ $konselor->nama }}</h3>
+                            <p class="mb-2">{{ $konselor->pengalaman }}</p>
+                            <p class="mb-4">{{ $konselor->deskripsi }}</p>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
         </div>
-        <div class="col-12 col-sm-6 col-md-6 mb-4 mb-lg-0 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-          <div class="staff text-center">
-            <div class="mb-4"><img src="images/staff_2.jpg" alt="Image" class="img-fluid"></div>
-            <div class="staff-body">
-              <h3 class="staff-name">Anderson Matthew</h3>
-              <span class="d-block position mb-4">Teacher in Music</span>
-              <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-              <div class="social">
-                <a href="#" class="mx-2"><span class="icon-facebook"></span></a>
-                <a href="#" class="mx-2"><span class="icon-twitter"></span></a>
-                <a href="#" class="mx-2"><span class="icon-linkedin"></span></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-6 mb-4 mb-lg-0 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-          <div class="staff text-center">
-            <div class="mb-4"><img src="images/staff_3.jpg" alt="Image" class="img-fluid"></div>
-            <div class="staff-body">
-              <h3 class="staff-name">Cynthia Misso</h3>
-              <span class="d-block position mb-4">Teacher English</span>
-              <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-              <div class="social">
-                <a href="#" class="mx-2"><span class="icon-facebook"></span></a>
-                <a href="#" class="mx-2"><span class="icon-twitter"></span></a>
-                <a href="#" class="mx-2"><span class="icon-linkedin"></span></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-  </div> <!-- /.untree_co-section -->
+</div> <!-- /.untree_co-section -->
 @endsection

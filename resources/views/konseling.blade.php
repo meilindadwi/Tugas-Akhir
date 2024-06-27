@@ -26,7 +26,7 @@
               <div class="price"><span class="fig">Rp200.000</span><span>/3bulan</span></div>
               <p class="mb-4">Dilaksanakan di hari aktif (Senin - Jum'at) pukul 20.00 - 22.00 WIB. Dilaksanakan selama 3 bulan</p>
               
-              <p><a href="/reservasi" class="btn btn-outline-primary">Get Started</a></p>
+              <p><a href="/notedm" class="btn btn-outline-primary">Learn More</a></p>
             </div>
           </div>
         </div>
@@ -39,7 +39,7 @@
               <div class="price"><span class="fig">Rp200.000</span><span>/2jam</span></div>
               <p class="mb-4">Dilaksanakan di hari aktif (Senin-Jumat), untuk weekend dikenakan biaya tambahan Rp 50.000.</p>
               
-              <p><a href="/reservasi" class="btn btn-primary">Get Started</a></p>
+              <p><a href="/nodevc" class="btn btn-primary">Learn More</a></p>
             </div>
           </div>
         </div>
@@ -52,7 +52,7 @@
               <div class="price"><span class="fig">Rp300.000</span><span>/2jam</span></div>
               <p class="mb-4">Dilaksanakan di hari aktif (Senin-Jumat), untuk weekend dikenakan biaya tambahan Rp 50.000.</p>
               
-              <p><a href="/reservasi" class="btn btn-outline-primary">Get Started</a></p>
+              <p><a href="/notetm" class="btn btn-outline-primary">Learn More</a></p>
             </div>
           </div>
         </div>

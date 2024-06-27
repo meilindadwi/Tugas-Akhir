@@ -17,6 +17,7 @@
                             <th scope="col">Id</th>
                             <th scope="col">Nama</th>
                             <th scope="col">Pengalaman</th>
+                            <th scope="col">Deskripsi</th>
                             <th scope="col">Foto</th>
                             <th scope="col">Aksi</th>
                         </tr>
@@ -30,6 +31,7 @@
                     <th scope="row">{{ $no++ }}</th>
                     <td>{{ $row->nama }}</td>
                     <td>{{ $row->pengalaman }}</td>
+                    <td>{{ $row->deskripsi }}</td>
                     <td>
                         <img src="{{ asset('fotokonselor/'.$row->foto) }}" alt="" style="width: 40px;">
                     </td>

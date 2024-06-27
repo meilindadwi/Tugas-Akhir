@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Admin</title>
+  <title>RFT</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -43,58 +43,31 @@
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
 
-    <div class="search-bar">
-      <form class="search-form d-flex align-items-center" method="POST" action="#">
-        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-      </form>
-    </div><!-- End Search Bar -->
-
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
-
-        <li class="nav-item d-block d-lg-none">
-          <a class="nav-link nav-icon search-bar-toggle " href="#">
-            <i class="bi bi-search"></i>
-          </a>
-        </li><!-- End Search Icon-->
-
-        </li><!-- End Messages Nav -->
 
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="{{ asset('admin/img/profile-img.jpg') }}" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">Silviana</span>
+            <span class="d-none d-md-block dropdown-toggle ps-2">RFT</span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-            <li class="dropdown-header">
-              <h6>Silviana</h6>
-              <span>Admin</span>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
 
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-person"></i>
-                <span>My Profile</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
+    <!-- Logout item -->
+    <li>
+        <a class="dropdown-item d-flex align-items-center" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            <i class="bi bi-box-arrow-right"></i>
+            <span>Logout</span>
+        </a>
+    </li>
 
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="/logout">
-                <i class="bi bi-box-arrow-right"></i>
-                <span>Logout</span>
-              </a>
-            </li>
+    <!-- Hidden logout form -->
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
+</ul>
 
-          </ul><!-- End Profile Dropdown Items -->
         </li><!-- End Profile Nav -->
 
       </ul>
@@ -102,11 +75,9 @@
 
   </header><!-- End Header -->
 
-  <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
-
-    <ul class="sidebar-nav" id="sidebar-nav">
-
+<ul class="sidebar-nav" id="sidebar-nav">
+      @if (Auth::user()->role == 'admin')
       <li class="nav-item">
         <a class="nav-link " href="/adminn">
           <i class="bi bi-grid"></i>
@@ -115,29 +86,34 @@
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="/adminn">
-          <i class="bi bi-person"></i>
-          <span>Konseling</span>
-        </a>
-      </li><!-- End Components Nav -->
-
-      <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-journal-text"></i><span>Kelas Online</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-journal-text"></i><span>Materi</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a href="/materi">
-              <i class="bi bi-circle"></i><span>Materi</span>
+              <i class="bi bi-circle"></i><span>Materi NIH</span>
             </a>
           </li>
           <li>
-            <a href="forms-layouts.html">
-              <i class="bi bi-circle"></i><span>Pembayaran</span>
+            <a href="/materipmh">
+              <i class="bi bi-circle"></i><span>Materi PMH</span>
+            </a>
+          </li>
+          <li>
+            <a href="/webinar">
+              <i class="bi bi-circle"></i><span>Webinar Tematik</span>
             </a>
           </li>
         </ul>
       </li><!-- End Forms Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/admin/payments">
+          <i class="bi bi-person"></i>
+          <span>Pembayaran</span>
+        </a>
+      </li><!-- End Components Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="/konselor">
@@ -147,27 +123,25 @@
       </li><!-- End Components Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="users-testimoni.html">
+        <a class="nav-link collapsed" href="/admin/testimoni">
           <i class="bi bi-person"></i>
           <span>Testimoni</span>
         </a>
       </li><!-- End Components Nav -->
-
+      @endif
+      
+      @if (Auth::user()->role == 'konselor')
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/admin/reservations">
+          <i class="bi bi-person"></i>
+          <span>Konseling</span>
+        </a>
+      </li><!-- End Components Nav -->
+      @endif
     </ul>
-
-  </aside><!-- End Sidebar-->
+    </aside><!-- End Sidebar-->
 
   <main id="main" class="main">
-
-    <div class="pagetitle">
-      <h1>Dashboard</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">Dashboard</li>
-        </ol>
-      </nav>
-    </div><!-- End Page Title -->
 
     @yield('content')
 

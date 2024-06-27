@@ -17,6 +17,8 @@ class CreateReservationsTable extends Migration
             $table->time('time');
             $table->text('notes')->nullable();
             $table->string('payment_proof')->nullable();
+            $table->string('status')->default('pending');
+            $table->enum('consultation_method', ['dm instagram', 'video call', 'offline']);
             $table->timestamps();
         });
     }

@@ -26,7 +26,7 @@
               <div class="price"><span class="fig">Rp200.000</span><span>/batch</span></div>
               <p class="mb-4">Berisi fasilitas video materi yang dapat diakses selamanya dan forum online untuk berdiskusi dengan konselor</p>
               
-              <p><a href="/payment" class="btn btn-outline-primary">Get Started</a></p>
+              <p><a href="/upmateri" class="btn btn-outline-primary">Get Started</a></p>
             </div>
           </div>
         </div>
@@ -39,7 +39,7 @@
               <div class="price"><span class="fig">Rp150.000</span><span>/batch</span></div>
               <p class="mb-4">Berisi fasilitas video materi yang dapat diakses selamanya dan forum online untuk berdiskusi dengan konselor</p>
               
-              <p><a href="/payment" class="btn btn-primary">Get Started</a></p>
+              <p><a href="/upmateripmh" class="btn btn-primary">Get Started</a></p>
             </div>
           </div>
         </div>
@@ -52,7 +52,7 @@
               <div class="price"><span class="fig">Infak terbaik</span><span>/sesi</span></div>
               <p class="mb-4">Rekaman webinar dapat diakses selamanya melalui youtube RFT</p>
               
-              <p><a href="/payment" class="btn btn-outline-primary">Get Started</a></p>
+              <p><a href="/upwebinar" class="btn btn-outline-primary">Get Started</a></p>
             </div>
           </div>
         </div>
