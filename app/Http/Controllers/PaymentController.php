@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use App\Models\Payment; // Pastikan model Payment diimpor
-use App\Notifications\PaymentReceivedNotification; // Jika menggunakan notifikasi
+use App\Models\Payment; 
 
 class PaymentController extends Controller
 {
@@ -13,33 +12,27 @@ class PaymentController extends Controller
     {
         $this->middleware('auth'); 
     }
-
-    /**
-     * Menampilkan form untuk membuat pembayaran.
-     *
-     * @return \Illuminate\View\View
-     */
     public function create()
     {
         return view('payment');
     }
 
-    /**
-     * Menyimpan data pembayaran baru.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function store(Request $request)
     {
         // Validasi input
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
-            'phone' => 'required|string|max:15',
+            'date' => 'required|date',
             'payment_proof' => 'required|file|max:2048',
             'class' => 'required|in:nih,pmh,webinar',
         ]);
+
+        $prices = [
+            'nih' => 200000,
+            'pmh' => 150000,
+            'webinar' => 0,
+            ];
 
         // Simpan file pembayaran
         if ($request->hasFile('payment_proof')) {
@@ -48,19 +41,25 @@ class PaymentController extends Controller
                 $fileName = time() . '_' . $file->getClientOriginalName();
                 $filePath = $file->storeAs('uploads', $fileName, 'public');
 
+                $class = $request->class;
+                $price = $prices[$class];
+                $uniqueCode = $this->generateUniqueCode();
+                $finalPrice = $price + $uniqueCode;
+
                 // Buat entri pembayaran baru
                 $payment = Payment::create([
                     'name' => $request->name,
                     'email' => $request->email,
-                    'phone' => $request->phone,
+                    'date' => $request->date,
                     'payment_proof' => $filePath,
                     'status' => 'pending',
-                    'class' => $request->class,
+                    'class' => $class,
+                    'price' => $finalPrice,
                 ]);
 
                 // Log berhasil
                 Log::info('Pembayaran berhasil: ' . $payment->id);
-                return redirect()->route('payment.create')->with('success', 'Pembayaran Berhasil.');
+                return redirect()->route('payment.create')->with('success', 'Pembayaran sedang diverifikasi');
             } catch (\Exception $e) {
                 // Log error saat menyimpan file
                 Log::error('Error saat menyimpan file: ' . $e->getMessage());
@@ -72,12 +71,11 @@ class PaymentController extends Controller
             return redirect()->back()->withErrors('Tidak ada file yang diunggah.');
         }
     }
+    private function generateUniqueCode()
+    {
+        return rand(100, 999); // Menghasilkan kode unik 3 digit
+    }
 
-    /**
-     * Menampilkan daftar pembayaran di halaman admin.
-     *
-     * @return \Illuminate\View\View
-     */
     public function index()
     {
         $payments = Payment::all();
@@ -97,14 +95,6 @@ class PaymentController extends Controller
     $payment->save();
 
     return redirect()->route('admin.payments.index')->with('success', 'Payment status updated successfully.');
-}
-public function approvePayment($id)
-{
-    $payment = Payment::findOrFail($id);
-    $payment->status = 'approved';
-    $payment->save();
-
-    return redirect()->back()->with('success', 'Payment with ID ' . $payment->id . ' has been approved.');
 }
 
 }

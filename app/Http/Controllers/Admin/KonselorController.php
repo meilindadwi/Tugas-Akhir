@@ -24,7 +24,7 @@ class KonselorController extends Controller
             $konselor->foto = $request->file('foto')->getClientOriginalName();
             $konselor->save();
         }
-        return redirect()->route('konselor')->with('success','Data Berhasil Ditambahkan');
+        return redirect()->route('konselor')->with('success','Data konselor berhasil ditambahkan');
     }
 
     public function tampildata($id){
@@ -36,13 +36,13 @@ class KonselorController extends Controller
         $konselor = konselor::find($id);
         $konselor->update($request->all());
 
-        return redirect()->route('konselor')->with('success','Data Berhasil Diupdate');
+        return redirect()->back()->with('success',' Data konselor berhasil diupdate');
     }
     public function deletedata($id){
         $konselor = konselor::find($id);
         $konselor->delete();
 
-        return redirect()->route('konselor')->with('success','Data Berhasil Dihapus');
+        return redirect()->back()->with('success','Data konselor berhasil dihapus');
     }
 
 }

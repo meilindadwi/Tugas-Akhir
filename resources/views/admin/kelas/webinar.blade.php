@@ -5,7 +5,7 @@
     <div class="col-lg-12 col-md-12 col-12 col-sm-12">
         <div class="card">
             <div class="card-body">
-            <a href="/tambahmateriwebinar" class="btn btn-primary mb-3">+ Tambah Materi</a>
+            <a href="/tambahmateriwebinar" class="btn btn-primary mb-3">+ Tambah Webinar</a>
                 @if ($message = Session::get('success'))
                     <div class="alert alert-success" role="alert">
                         {{ $message }}

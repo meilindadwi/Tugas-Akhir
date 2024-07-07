@@ -12,10 +12,11 @@ class Payment extends Model
     protected $fillable = [
         'name',
         'email',
-        'phone',
+        'date',
         'payment_proof',
         'status',
         'class',
+        'price'
     ];
 
     /**

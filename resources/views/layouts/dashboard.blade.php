@@ -87,6 +87,34 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-journal-text"></i><span>Layanan</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="/admin/konseling">
+              <i class="bi bi-circle"></i><span>Paket Konseling</span>
+            </a>
+          </li>
+          <li>
+            <a href="/admin/kelas">
+              <i class="bi bi-circle"></i><span>Paket Kelas Online</span>
+            </a>
+          </li>
+          <li>
+            <a href="/admin/training">
+              <i class="bi bi-circle"></i><span>Paket IHT</span>
+            </a>
+          </li>
+          <li>
+            <a href="/admin/safari">
+              <i class="bi bi-circle"></i><span>Safari Healing</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Forms Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-journal-text"></i><span>Materi</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
@@ -101,7 +129,7 @@
             </a>
           </li>
           <li>
-            <a href="/webinar">
+            <a href="/admin/webinar">
               <i class="bi bi-circle"></i><span>Webinar Tematik</span>
             </a>
           </li>
@@ -123,6 +151,13 @@
       </li><!-- End Components Nav -->
 
       <li class="nav-item">
+        <a class="nav-link collapsed" href="/admin/about">
+          <i class="bi bi-journal-text"></i>
+          <span>Blog</span>
+        </a>
+      </li><!-- End Components Nav -->
+
+      <li class="nav-item">
         <a class="nav-link collapsed" href="/admin/testimoni">
           <i class="bi bi-person"></i>
           <span>Testimoni</span>
@@ -134,7 +169,7 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="/admin/reservations">
           <i class="bi bi-person"></i>
-          <span>Konseling</span>
+          <span>Reservasi Konseling</span>
         </a>
       </li><!-- End Components Nav -->
       @endif

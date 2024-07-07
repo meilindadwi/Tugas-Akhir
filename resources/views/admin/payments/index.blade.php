@@ -17,8 +17,9 @@
                             <th>ID</th>
                             <th>Nama</th>
                             <th>Email</th>
-                            <th>Phone</th>
+                            <th>Tanggal</th>
                             <th>Kelas</th>
+                            <th>Harga</th>
                             <th>Bukti Pembayaran</th>
                             <th>Status</th>
                             <th>Action</th>
@@ -30,8 +31,9 @@
                                 <td>{{ $payment->id }}</td>
                                 <td>{{ $payment->name }}</td>
                                 <td>{{ $payment->email }}</td>
-                                <td>{{ $payment->phone }}</td>
+                                <td>{{ $payment->date }}</td>
                                 <td>{{ $payment->class }}</td>
+                                <td>{{ $payment->price }}</td>
                                 <td>
                                     @if ($payment->payment_proof)
                                         <a href="{{ asset('storage/' . $payment->payment_proof) }}" target="_blank">View</a>

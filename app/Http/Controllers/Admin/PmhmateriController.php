@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Pmhmateri;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PmhmateriController extends Controller
 {
@@ -38,10 +39,10 @@ class PmhmateriController extends Controller
                 'video_materi' => $path,
             ]);
 
-            return redirect()->back()->with('success', 'Video berhasil diupload.');
+            return redirect()->route('materipmh')->with('success', 'Materi PMH berhasil ditambahkan.');
         }
 
-        return redirect()->back()->with('error', 'Gagal mengupload video.');
+        return redirect()->back()->with('error', 'Gagal mengupload materi.');
     }
     
     public function tampilkandata($id){
@@ -50,18 +51,43 @@ class PmhmateriController extends Controller
             return view('admin.kelas.tampilpmh', compact('data'));
     
         }
-    
-        public function updatedata(Request $request, $id){
-            $data = Pmhmateri::find($id);
-            $data->update($request->all());
-    
-            return redirect()->route('materipmh')->with('success','Data Berhasil Diupdate');
+        public function updatedata(Request $request, $id)
+{
+    $data = Pmhmateri::find($id);
+
+    // Validasi input
+    $request->validate([
+        'judul' => 'required|string|max:255',
+        'deskripsi_materi' => 'required|string',
+        'video_materi' => 'nullable|mimes:mp4,mov,ogg,qt|max:20000',
+    ]);
+
+    $updateData = [
+        'judul' => $request->input('judul'),
+        'deskripsi_materi' => $request->input('deskripsi_materi'),
+    ];
+
+    if ($request->hasFile('video_materi')) {
+        // Hapus file lama jika ada file baru
+        if ($data->video_materi) {
+            Storage::delete('public/' . $data->video_materi);
         }
+        // Simpan file baru
+        $file = $request->file('video_materi');
+        $filename = time() . '_' . $file->getClientOriginalName();
+        $path = $file->storeAs('videos', $filename, 'public');
+        $updateData['video_materi'] = $path;
+    }
+
+    $data->update($updateData);
+
+    return redirect()->route('materipmh')->with('success', 'Materi PMH berhasil diupdate.');
+}
     
         public function delete($id){
             $data = Pmhmateri::find($id);
             $data->delete();
     
-            return redirect()->route('materipmh')->with('success','Data Berhasil Dihapus');
+            return redirect()->route('materipmh')->with('success', 'Materi PMH berhasil dihapus.');
         }
 }

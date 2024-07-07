@@ -10,4 +10,5 @@ class Webinar extends Model
     use HasFactory;
     protected $table = 'webinar';
     protected $fillable = ['judul', 'deskripsi_materi', 'tanggal', 'waktu', 'pembicara', 'foto'];
+    protected $dates = ['tanggal'];
 }

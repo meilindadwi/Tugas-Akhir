@@ -17,11 +17,11 @@
                             <th>ID</th>
                             <th>Nama</th>
                             <th>Email</th>
-                            <th>Phone</th>
                             <th>Metode Konseling</th>
                             <th>Tanggal</th>
                             <th>Waktu</th>
                             <th>Catatan</th>
+                            <th>Harga</th>
                             <th>Bukti Pembayaran</th>
                             <th>Status</th>
                             <th>Action</th>
@@ -33,11 +33,11 @@
                                 <td>{{ $reservation->id }}</td>
                                 <td>{{ $reservation->name }}</td>
                                 <td>{{ $reservation->email }}</td>
-                                <td>{{ $reservation->phone }}</td>
                                 <td>{{ $reservation->consultation_method }}</td>
                                 <td>{{ $reservation->date }}</td>
                                 <td>{{ $reservation->time }}</td>
                                 <td>{{ $reservation->notes }}</td>
+                                <td>{{ $reservation->price }}</td>
                                 <td>
                                 @if ($reservation->payment_proof)
                                     <a href="{{ asset('storage/' . $reservation->payment_proof) }}" target="_blank">View</a>

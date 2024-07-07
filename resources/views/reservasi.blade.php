@@ -8,8 +8,15 @@
 <div class="untree_co-section">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8" data-aos="fade-up" data-aos-delay="0">
+            <div class="col-lg-12" data-aos="fade-up" data-aos-delay="0">
                 <div class="card">
+                    <div class="card-header">
+                        <h4 class="mb-2">Informasi rekening tujuan</h4>
+                        <p>
+                            Bank tujuan : BSI<br>
+                            No rekening : 7243624597 a.n. Amalia Roza Brillianty
+                        </p>
+                    </div>
                     <div class="card-body">
                         @if(session('success'))
                             <div class="alert alert-success">
@@ -21,19 +28,13 @@
                             <div class="mb-3 row">
                                 <label for="name" class="col-sm-4 col-form-label">Nama</label>
                                 <div class="col-sm-8">
-                                    <input type="text" name="name" class="form-control" id="name" value="{{ old('name') }}" required>
+                                    <input type="text" name="name" class="form-control" id="name" value="{{ Auth::user()->name }}" required readonly>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label for="email" class="col-sm-4 col-form-label">Email</label>
                                 <div class="col-sm-8">
-                                    <input type="email" name="email" class="form-control" id="email" value="{{ old('email') }}" required>
-                                </div>
-                            </div>
-                            <div class="mb-3 row">
-                                <label for="phone" class="col-sm-4 col-form-label">Phone</label>
-                                <div class="col-sm-8">
-                                    <input type="text" name="phone" class="form-control" id="phone" value="{{ old('phone') }}" required>
+                                    <input type="email" name="email" class="form-control" id="email" value="{{ Auth::user()->email }}" required readonly>
                                 </div>
                             </div>
                             <div class="mb-3 row">
@@ -41,9 +42,9 @@
                                 <div class="col-sm-8">
                                     <select name="consultation_method" class="form-control" id="consultation_method" required>
                                         <option value="" disabled selected>Pilih metode</option>
-                                        <option value="dm instagram">DM Instagram</option>
-                                        <option value="video call">Video Call</option>
-                                        <option value="offline">Offline</option>
+                                        <option value="dm instagram" data-price="200000">DM Instagram</option>
+                                        <option value="video call" data-price="200000">Video Call</option>
+                                        <option value="offline" data-price="300000">Offline</option>
                                     </select>
                                 </div>
                             </div>
@@ -66,6 +67,12 @@
                                 </div>
                             </div>
                             <div class="mb-3 row">
+                                <label for="price" class="col-sm-4 col-form-label">Jumlah yang dibayarkan</label>
+                                <div class="col-sm-8">
+                                    <input type="text" name="price" class="form-control" id="price" value="{{ old('price') }}" readonly>
+                                </div>
+                            </div>
+                            <div class="mb-3 row">
                                 <label for="pembayaran" class="col-sm-4 col-form-label">Bukti Pembayaran</label>
                                 <div class="col-sm-8">
                                     <input type="file" name="pembayaran" class="form-control" id="pembayaran" required>
@@ -80,18 +87,20 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                <div class="card mt-4 mt-lg-0">
-                    <div class="card-body">
-                        <h4 class="mb-2">Metode Pembayaran</h4>
-                        <p>
-                            Bank Transfer<br>
-                            BSI : 7243624597 a.n. Amalia Roza Brillianty
-                        </p>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const consultationMethodSelect = document.getElementById('consultation_method');
+        const priceInput = document.getElementById('price');
+
+        consultationMethodSelect.addEventListener('change', function () {
+            const selectedOption = consultationMethodSelect.options[consultationMethodSelect.selectedIndex];
+            const price = selectedOption.getAttribute('data-price');
+            priceInput.value = price;
+        });
+    });
+</script>
 @endsection

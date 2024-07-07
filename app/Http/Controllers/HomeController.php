@@ -16,12 +16,16 @@ class HomeController extends Controller
     public function index()
     {
         $konselors = Konselor::all();
-        $testimonis = Testimoni::where('status', 'approved')->get(); // Ambil testimoni yang sudah disetujui
+        $testimonis = Testimoni::where('status', 'approved')->get();
+        $unreadNotifications = auth()->user()->unreadNotifications;
+
+        auth()->user()->unreadNotifications->markAsRead();
         
         return view('home', [
             'title' => 'Home',
             'konselors' => $konselors,
             'testimonis' => $testimonis,
+            'unreadNotifications' => $unreadNotifications,
         ]);
     }
 

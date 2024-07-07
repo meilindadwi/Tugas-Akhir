@@ -11,52 +11,16 @@
 @section('content')
 <div class="untree_co-section">
     <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-lg-4 item">
-          <a href="images/img-school-5-min.jpg" class="item-wrap fancybox mb-4" data-fancybox="gal" data-aos="fade-up" data-aos-delay="0">
-            <span class="icon-search2"></span>
-            <img class="img-fluid" src="images/img-school-5-min.jpg">
-          </a>
-          <a href="images/img_1.jpg" class="item-wrap fancybox mb-4" data-fancybox="gal" data-aos="fade-up" data-aos-delay="0">
-            <span class="icon-search2"></span>
-            <img class="img-fluid" src="images/img_1.jpg">
-          </a>
-          <a href="images/img_2.jpg" class="item-wrap fancybox mb-4" data-fancybox="gal" data-aos="fade-up" data-aos-delay="100">
-            <span class="icon-search2"></span>
-            <img class="img-fluid" src="images/img_2.jpg">
-          </a>
-
+        <div class="row">
+            @foreach ($safaris as $safari)
+                <div class="col-md-6 col-lg-4 item">
+                    <a href="{{ Storage::url($safari->foto) }}" class="item-wrap fancybox mb-4" data-fancybox="gal" data-aos="fade-up" data-aos-delay="0">
+                        <span class="icon-search2"></span>
+                        <img class="img-fluid" src="{{ Storage::url($safari->foto) }}" alt="Foto Safari">
+                    </a>
+                </div>
+            @endforeach
         </div>
-        <div class="col-md-6 col-lg-4 item">
-          <a href="images/img-school-1-min.jpg" class="item-wrap fancybox mb-4" data-fancybox="gal" data-aos="fade-up" data-aos-delay="0">
-            <span class="icon-search2"></span>
-            <img class="img-fluid" src="images/img-school-1-min.jpg">
-          </a>
-          <a href="images/img_1.jpg" class="item-wrap fancybox mb-4" data-fancybox="gal" data-aos="fade-up" data-aos-delay="0">
-            <span class="icon-search2"></span>
-            <img class="img-fluid" src="images/img_4.jpg">
-          </a>
-          <a href="images/img_5.jpg" class="item-wrap fancybox mb-4" data-fancybox="gal" data-aos="fade-up" data-aos-delay="100">
-            <span class="icon-search2"></span>
-            <img class="img-fluid" src="images/img_5.jpg">
-          </a>
-        </div>
-        <div class="col-md-6 col-lg-4 item">
-          <a href="images/img-school-2-min.jpg" class="item-wrap fancybox mb-4" data-fancybox="gal" data-aos="fade-up" data-aos-delay="0">
-            <span class="icon-search2"></span>
-            <img class="img-fluid" src="images/img-school-2-min.jpg">
-          </a>
-          <a href="images/img_9.jpg" class="item-wrap fancybox mb-4" data-fancybox="gal" data-aos="fade-up" data-aos-delay="0">
-            <span class="icon-search2"></span>
-            <img class="img-fluid" src="images/img_9.jpg">
-          </a>
-          <a href="images/img_6.jpg" class="item-wrap fancybox mb-4" data-fancybox="gal" data-aos="fade-up" data-aos-delay="100">
-            <span class="icon-search2"></span>
-            <img class="img-fluid" src="images/img_6.jpg">
-          </a>
-
-        </div>
-      </div>
     </div>
-  </div> <!-- /.untree_co-section -->
+</div> <!-- /.untree_co-section -->
 @endsection

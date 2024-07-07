@@ -28,7 +28,7 @@
                             Register
                         </a>
                     @else
-                        <div class="dropdown">
+                        <div class="dropdown d-inline">
                             <a href="#" class="small mr-3 dropdown-toggle" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="icon-person"></span>
                                 {{ Auth::user()->name }}
@@ -43,6 +43,22 @@
                                 </form>
                             </div>
                         </div>
+                        <div class="d-inline">
+    <a href="#" class="small" id="notificationDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="icon-bell"></span>
+        @if(Auth::user()->unreadNotifications->count() > 0)
+            <span class="badge badge-danger">{{ Auth::user()->unreadNotifications->count() }}</span>
+        @endif
+    </a>
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="notificationDropdown">
+        @foreach(Auth::user()->unreadNotifications as $notification)
+            <a class="dropdown-item" href="{{ route('notifications.show', $notification->id) }}">
+                {{ $notification->data['message'] }}
+            </a>
+        @endforeach
+    </div>
+</div>
+
                     @endguest
                 </div>
             </div>

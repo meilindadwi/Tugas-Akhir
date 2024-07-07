@@ -15,5 +15,17 @@ class DashboardController extends Controller
     function konselor(){
         return view('admin.dashboard');
     }
+    public function index()
+    {
+        $totalUsers = User::count();
+        $totalReservations = Reservation::count();
+        $totalClass = Payment::count();
+
+        //totaluang
+        $totalReservationPayment = Reservation::sum('price');
+        $totalPaymentPayment = Payment::sum('price');
+        $totalPayment = $totalReservationPayment + $totalPaymentPayment;
+        return view('admin.dashboard', compact('totalUsers', 'totalReservations', 'totalClass', 'totalPayment'));
+    }
 }
 

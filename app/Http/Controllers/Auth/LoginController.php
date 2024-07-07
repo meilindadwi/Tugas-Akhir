@@ -39,13 +39,15 @@ class LoginController extends Controller
         ];
 
         if (Auth::attempt($infologin)) {
-            if (Auth:: user()->role == 'admin') {
+            if (Auth::user()->role == 'admin') {
                 return redirect('/adminn');
-            }elseif (Auth::user()->role == 'konselor') {
+            } elseif (Auth::user()->role == 'konselor') {
                 return redirect('/admin/reservations');
+            } elseif (Auth::user()->role == 'user') {
+                return redirect('/'); // Sesuaikan dengan halaman user
             }
-        }else{
-           return redirect('/')->withErrors('Username dan password yang dimasukkan tidak sesuai')->withInput();
+        } else {
+            return redirect('/login')->withErrors('Username dan password yang dimasukkan tidak sesuai')->withInput();
         }
     }
     function logout(Request $request)
